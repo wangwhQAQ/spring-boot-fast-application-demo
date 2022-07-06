@@ -47,6 +47,13 @@
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring5</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>20.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
