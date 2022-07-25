@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.Config.ThreadConfig;
 import com.example.demo.Lambda.Interface.BaseInterface;
 import com.example.demo.Lambda.Interface.BaseInterface2;
+import com.example.demo.Model.valueTest;
 import com.example.demo.Thread.TestThreadFactory;
 import com.example.demo.Thread.TestRunnable;
 import com.example.demo.Utils.TestSpringUtil;
@@ -27,8 +28,13 @@ public class DemoApplication {
 	@Resource
 	TestSpringUtil springUtil;
 
+	@Resource
+	valueTest valueTest1;
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
+		valueTest value = new valueTest();
+		System.out.println(value.getValue());
 	}
 
 //	@Bean
@@ -57,7 +63,7 @@ public class DemoApplication {
 		System.out.println("---------");
 	}
 
-	@Bean
+//	@Bean
 	public void testLambda() throws InterruptedException {
 		BaseInterface lambda;
 		lambda = ()->{
@@ -73,4 +79,10 @@ public class DemoApplication {
 		};
 		Object thing = lambda2.doSomeThing(new ArrayList<Integer>(3));
 	}
+
+	@Bean
+	public void valueSout(){
+		System.out.println(valueTest1.getValue());
+	}
+
 }
