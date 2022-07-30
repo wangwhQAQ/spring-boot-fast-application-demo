@@ -4,6 +4,8 @@ import com.example.demo.Config.ThreadConfig;
 import com.example.demo.Lambda.Interface.BaseInterface;
 import com.example.demo.Lambda.Interface.BaseInterface2;
 import com.example.demo.Model.valueTest;
+import com.example.demo.Service.TestService;
+import com.example.demo.Service2.Service.TestService2;
 import com.example.demo.Thread.TestThreadFactory;
 import com.example.demo.Thread.TestRunnable;
 import com.example.demo.Utils.TestSpringUtil;
@@ -27,14 +29,16 @@ public class DemoApplication {
 	TestThreadFactory factory;
 	@Resource
 	TestSpringUtil springUtil;
+	@Resource
+	TestService testService;
+	@Resource
+	TestService2 testService2;
 
 	@Resource
 	valueTest valueTest1;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
-		valueTest value = new valueTest();
-		System.out.println(value.getValue());
 	}
 
 //	@Bean
@@ -80,9 +84,14 @@ public class DemoApplication {
 		Object thing = lambda2.doSomeThing(new ArrayList<Integer>(3));
 	}
 
-	@Bean
+	//@Bean
 	public void valueSout(){
 		System.out.println(valueTest1.getValue());
 	}
 
+	@Bean
+	public Integer aspectTest(){
+		testService2.catchExpectionMethod(500);
+		return testService.catchExpectionMethod(100);
+	}
 }
