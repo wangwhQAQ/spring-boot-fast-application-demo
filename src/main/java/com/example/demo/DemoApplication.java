@@ -1,8 +1,11 @@
 package com.example.demo;
 
+import com.example.demo.Aspect.Initialization.FiledAspectInitialization;
 import com.example.demo.Config.ThreadConfig;
 import com.example.demo.Lambda.Interface.BaseInterface;
 import com.example.demo.Lambda.Interface.BaseInterface2;
+import com.example.demo.Model.Person;
+import com.example.demo.Model.TestField;
 import com.example.demo.Model.valueTest;
 import com.example.demo.Service.TestService;
 import com.example.demo.Service2.Service.TestService2;
@@ -16,6 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import javax.annotation.Resource;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
@@ -34,11 +38,17 @@ public class DemoApplication {
 	@Resource
 	TestService2 testService2;
 
+//	@Resource
+	TestField testField;
+
 	@Resource
 	valueTest valueTest1;
+	@Resource
+	FiledAspectInitialization initialization;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
 		SpringApplication.run(DemoApplication.class, args);
+
 	}
 
 //	@Bean
@@ -90,7 +100,9 @@ public class DemoApplication {
 	}
 
 	@Bean
-	public Integer aspectTest(){
+	public Integer aspectTest() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+		initialization.Initialization();
+//		System.out.println(testField.toString());
 		testService2.catchExpectionMethod(500);
 		return testService.catchExpectionMethod(100);
 	}
