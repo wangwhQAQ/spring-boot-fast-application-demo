@@ -1,13 +1,16 @@
 package com.example.demo.Model;
 
 import com.example.demo.Aspect.Interface.FiledAspect;
+import com.example.demo.Aspect.Interface.TrueFieldAspect;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 @ToString
-@Component
+@Service
 public class TestField {
     Person person;
 
-    String addr;
+    @TrueFieldAspect(nickname = "nickname2")
+    String addr ;
 }

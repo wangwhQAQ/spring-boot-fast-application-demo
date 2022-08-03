@@ -38,7 +38,7 @@ public class DemoApplication {
 	@Resource
 	TestService2 testService2;
 
-//	@Resource
+	@Resource
 	TestField testField;
 
 	@Resource
@@ -101,8 +101,11 @@ public class DemoApplication {
 
 	@Bean
 	public Integer aspectTest() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-		initialization.Initialization();
-//		System.out.println(testField.toString());
+//		initialization.Initialization();
+//		initialization.Reflection();
+
+		System.out.println(testField.toString());
+
 		testService2.catchExpectionMethod(500);
 		return testService.catchExpectionMethod(100);
 	}
