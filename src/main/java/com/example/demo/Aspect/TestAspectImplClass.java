@@ -22,10 +22,10 @@ public class TestAspectImplClass {
 
     }
 
-    @Pointcut(value = "execution(* com.example.demo.Service.*.*(..))")
-    public void TesAspectCut2(){
-
-    }
+//    @Pointcut(value = "execution(* com.example.demo.Service.*.*(..))")
+//    public void TesAspectCut2(){
+//
+//    }
 
     //  ProceedingJoinPoint   类型作为参数  只能用于环绕通知  因为它暴露了 proceed 方法
     @Around("TesAspectCut1()")
@@ -44,7 +44,7 @@ public class TestAspectImplClass {
         return obj;
     }
 
-    @Around("TesAspectCut2()")
+    @Around("execution(* com.example.demo.Service.*.*(..))")
     public Object methodInjection2(ProceedingJoinPoint pjp) throws Throwable{
         String methodName = pjp.getSignature().getName();
         String className = pjp.getTarget().getClass().toString();

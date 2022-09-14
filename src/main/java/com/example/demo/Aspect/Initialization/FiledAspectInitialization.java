@@ -35,9 +35,10 @@ public class FiledAspectInitialization {
             //getDeclaredAnnotation()方法获取指定的声明的注释类型的声明的注释。该方法以对象的形式返回该类。
             FiledAspect filedAspect = (FiledAspect) clazz.getDeclaredAnnotation(FiledAspect.class);
             String name = filedAspect.name();
+            Integer age = filedAspect.age();
             //getDeclaredConstructors()方法用于返回一个Constructor对象数组，该数组指示此Class对象所表示的类定义的构造函数的类型
             //这里是在构建实例
-            Object object = clazz.getDeclaredConstructor(String.class,int.class).newInstance(name,1);
+            Object object = clazz.getDeclaredConstructor(String.class,int.class).newInstance(name,age);
 
 //            Person person = (Person) object;
 
