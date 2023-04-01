@@ -6,7 +6,7 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 @ToString
-@FiledAspect
+//@FiledAspect
 //@Data
 public class Person {
     String name;

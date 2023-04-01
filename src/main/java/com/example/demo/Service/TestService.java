@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
  */
 public interface TestService {
     public Integer catchExpectionMethod(Integer input);
+
+    public boolean doTransfer();
 }
