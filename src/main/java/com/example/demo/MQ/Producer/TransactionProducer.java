@@ -13,10 +13,11 @@ import java.util.concurrent.TimeUnit;
 
 public class TransactionProducer {
     // 事务的处理逻辑和普通的处理逻辑是不一样的，所以组要分开
-    public TransactionMQProducer transactionMQProducer = new TransactionMQProducer("TRANSACTION_QUEUE");
+    public TransactionMQProducer transactionMQProducer ;
 
     private ThreadPoolExecutor threadPoolExecutor ;
     TransactionProducer(){
+        transactionMQProducer = new TransactionMQProducer("TRANSACTION_QUEUE");
         transactionMQProducer.setNamesrvAddr("192.168.190.67:9876");
         //设置一个连接池，用于回查本地事务的状态
         threadPoolExecutor = new ThreadPoolExecutor(

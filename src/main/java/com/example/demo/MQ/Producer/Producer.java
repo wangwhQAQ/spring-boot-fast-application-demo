@@ -20,29 +20,30 @@ public class Producer {
     public static void main(String[] args) throws UnsupportedEncodingException {
 
         Producer producer1 = new Producer();
-        Integer id = 6;
-        Message partition = new Message("TEST1", "20230401", id.toString(), "partition message ".getBytes(RemotingHelper.DEFAULT_CHARSET)  );
-        partition.setDelayTimeLevel(5);
-        producer1.sendPartitionMessage(partition);
+//        Integer id = 6;
+//        Message partition = new Message("TEST1", "20230401", id.toString(), "partition message ".getBytes(RemotingHelper.DEFAULT_CHARSET)  );
+//        partition.setDelayTimeLevel(5);
+//        producer1.sendPartitionMessage(partition);
 
-//        try{
-//            producer.start();
-//
-//            for (int i = 0; i < 100; i++) {
-//                String data = "\"text\" : \" 测试消息: \"" +i;
-//                Message message = new Message("TEST1", "20230330", data.getBytes());
-//                SendResult result = producer.send(message);
-//                Thread.sleep(1000);
-//
-//                System.out.println(result.toString());
-//
-//            }
-//
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }finally {
-//            producer.shutdown();
-//        }
+        try{
+            producer.start();
+
+            for (int i = 0; i < 10; i++) {
+                String data = "\"text\" : \" 测试消息: \"" +i;
+                Message message = new Message("TEST1", "20230330", data.getBytes());
+                message.setKeys(String.valueOf(i));
+                SendResult result = producer.send(message);
+                Thread.sleep(1000);
+
+                System.out.println(result.toString());
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            producer.shutdown();
+        }
     }
 
     public void sendPartitionMessage(Message message){
